@@ -45,7 +45,7 @@ options.add_argument("--remote-debugging-port=9222")  # helps Chrome bind proper
 options.add_argument("--window-size=1920,1080")
 
 # Initialize WebDriver
-driver = webdriver.Chrome(service=Service(ChromeDriverManager().install()), options=options)
+driver = uc.Chrome(options=options)
 
 base_url = "https://www.journaldespalaces.com/carriere/offres-hotels-restaurants-spa-par-date-"
 max_pages = 1
