@@ -9,7 +9,7 @@ from selenium import webdriver
 from time import sleep
 import random
 import os
-from selenium.webdriver.chrome.service import Service
+#from selenium.webdriver.chrome.service import Service
 #from webdriver_manager.chrome import ChromeDriverManager
 import unicodedata
 import re
@@ -31,6 +31,7 @@ from pydantic import BaseModel, Field, field_validator, constr, ValidationError,
 from typing import List, Optional, Any
 from google.cloud import bigquery
 from google.oauth2 import service_account
+
 
 
 
