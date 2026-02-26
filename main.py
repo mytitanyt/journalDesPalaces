@@ -1,7 +1,7 @@
 import time
 import random
 import pandas as pd
-import undetected_chromedriver as uc
+#import undetected_chromedriver as uc
 from selenium.webdriver.common.by import By
 from selenium.common.exceptions import NoSuchElementException
 from datetime import datetime
@@ -45,7 +45,7 @@ options.add_argument("--remote-debugging-port=9222")  # helps Chrome bind proper
 options.add_argument("--window-size=1920,1080")
 
 # Initialize WebDriver
-driver = uc.Chrome(options=options)
+driver = webdriver.Chrome(options=options)
 
 base_url = "https://www.journaldespalaces.com/carriere/offres-hotels-restaurants-spa-par-date-"
 max_pages = 1
@@ -125,7 +125,7 @@ options.add_argument('user-agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64) Apple
 
 
 # Launch the driver
-driver = uc.Chrome(options=options)
+driver = webdriver.Chrome(options=options)
 sleep(random.uniform(15, 20))
 
 
