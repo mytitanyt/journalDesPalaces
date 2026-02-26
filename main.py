@@ -155,18 +155,28 @@ for i, job_url in enumerate(job_urls):
         time.sleep(random.uniform(5, 10))  # Random delay for human-like behavior
     except NoSuchElementException:
         pass
-
+###TITLE
     try:
         title = get_text("h2")
     except NoSuchElementException:
         title = ""
-
-    try :
-        entreprise = get_text(".col_gauche_offre_ordi b", multiple=True)
-        entreprise = entreprise[0] if entreprise else ""
+        
+####ENTREPRISE NAME
+    try:
+        entreprise_list = get_text(".col_gauche_offre_ordi b", multiple=True)
+        entreprise = entreprise_list[0].strip() if entreprise_list else ""
     except NoSuchElementException:
         entreprise = ""
 
+    # Fallback if empty
+    if not entreprise:
+        try:
+            mobile_list = get_text(".col_gauche_offre_mobile h3 b", multiple=True)
+            entreprise = mobile_list[0].strip() if mobile_list else ""
+        except NoSuchElementException:
+            entreprise = ""
+            
+   #####VILLE         
     try:
         block = get_text(".div_caract_offre")
     except NoSuchElementException:
@@ -177,8 +187,18 @@ for i, job_url in enumerate(job_urls):
     if "Ville :" in block:
         location = block.split("Ville :")[1].split("Pays :")[0].strip()
 
+    if not location:
+        try:
+            block2 = get_text(".div_caract_offre2")
+        except NoSuchElementException:
+            block2 = ""
+
+    if "Ville :" in block2:
+        location = block2.split("Ville :")[1].split("Pays :")[0].strip()
+        
+####SALAIRE
     try:
-        block = get_text(".div_caract_offre")
+        block = get_text(".div_caract_offre2")
     except NoSuchElementException:
         block = ""
 
@@ -191,7 +211,8 @@ for i, job_url in enumerate(job_urls):
             salaire = salary_part.split("Horaire :")[0].strip()
         else:
             salaire = salary_part.strip()
-
+            
+####DESCRIPTION
     # First block
     try:
         description_1 = driver.find_element(By.CSS_SELECTOR, ".div_caract_offre .Carriere_texte").text
@@ -213,10 +234,13 @@ for i, job_url in enumerate(job_urls):
     # Combine everything
     description = description_1 + "\n\n" + description_2 + "\n\n" + description_3
 
+
+    ####DATE SCRAPPING
     date_scraping = datetime.datetime.now().strftime("%Y-%m-%d")
 
+    ####CONTRACT TYPE
     try:
-        block = driver.find_element(By.CSS_SELECTOR, ".div_caract_offre .Carriere_texte").text
+        block = driver.find_element(By.CSS_SELECTOR, ".div_caract_offre2 .Carriere_texte").text
     except NoSuchElementException:
         block = ""
         
