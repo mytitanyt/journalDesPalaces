@@ -54,7 +54,7 @@ options.add_argument(
 driver = webdriver.Chrome(options=options)
 
 base_url = "https://www.journaldespalaces.com/carriere/offres-hotels-restaurants-spa-par-date-"
-max_pages = 1
+max_pages = 10
 job_urls = []
 
 wait_time = random.uniform(5, 10)
@@ -79,8 +79,6 @@ for page in range(0, max_pages * 100, 100):
 driver.quit()  # Close the browser when done
 
 print(f"Collected {len(job_urls)} job URLs")
-
-job_urls = job_urls[:10]
 
 #------------------------CHECK DUPLICATES URL DANS BIGQUERY--------------------------------------------------
 
