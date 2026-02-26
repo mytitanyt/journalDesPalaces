@@ -246,6 +246,8 @@ driver.quit()
 # Convert list to Pandas DataFrame
 new_data = pd.DataFrame(job_data)
 
+print(new_data.localisation.head(5))
+
 # Apply nest_asyncio to fix event loop issue in Jupyter
 #nest_asyncio.apply()
 
