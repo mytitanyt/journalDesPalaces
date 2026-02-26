@@ -116,7 +116,7 @@ print(f"✅ Remaining job URLs to scrape: {len(job_urls)}")
 
 
 # Setup undetected Chrome driver
-options = uc.ChromeOptions()
+options = Options()
 options.add_argument("--headless=new")  # modern headless mode
 options.add_argument("--no-sandbox")
 options.add_argument("--disable-gpu")
