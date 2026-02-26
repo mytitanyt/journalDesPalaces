@@ -43,7 +43,6 @@ options.add_argument("--no-sandbox")
 options.add_argument("--disable-dev-shm-usage")
 options.add_argument("--disable-blink-features=AutomationControlled")
 options.add_argument("--remote-debugging-port=9222")  # helps Chrome bind properly in CI
-options.add_argument("--window-size=1920,1080")
 options.add_argument(
     "--user-agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64) "
     "AppleWebKit/537.36 (KHTML, like Gecko) "
@@ -62,7 +61,7 @@ wait_time = random.uniform(5, 10)
 for page in range(0, max_pages * 100, 100):
     url = f"{base_url}{page}.html"
     driver.get(url)  # Open the page
-    time.sleep(20)
+    time.sleep(wait_time)
     print(url)
     print(driver.title)
     print(len(driver.page_source))
