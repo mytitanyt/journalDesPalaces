@@ -31,7 +31,7 @@ from pydantic import BaseModel, Field, field_validator, constr, ValidationError,
 from typing import List, Optional, Any
 from google.cloud import bigquery
 from google.oauth2 import service_account
-
+from openai import OpenAI
 
 
 
