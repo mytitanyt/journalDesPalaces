@@ -163,7 +163,8 @@ for i, job_url in enumerate(job_urls):
         title = ""
 
     try :
-        entreprise = get_text(".col_gauche_offre_ordi b", multiple=True)[0]
+        entreprise = get_text(".col_gauche_offre_ordi b", multiple=True)
+        entreprise = entreprise[0] if entreprise else ""
     except NoSuchElementException:
         entreprise = ""
 
