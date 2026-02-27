@@ -53,7 +53,7 @@ options.add_argument(
 driver = webdriver.Chrome(options=options)
 
 base_url = "https://www.journaldespalaces.com/carriere/offres-hotels-restaurants-spa-par-date-"
-max_pages = 10
+max_pages = 3
 job_urls = []
 
 wait_time = random.uniform(5, 10)
