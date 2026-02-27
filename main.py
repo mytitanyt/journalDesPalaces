@@ -79,7 +79,7 @@ driver.quit()  # Close the browser when done
 
 print(f"Collected {len(job_urls)} job URLs")
 
-job_urls = job_urls[:10]
+job_urls = job_urls[:20]
 
 #------------------------CHECK DUPLICATES URL DANS BIGQUERY--------------------------------------------------
 
