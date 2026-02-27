@@ -53,7 +53,7 @@ options.add_argument(
 driver = webdriver.Chrome(options=options)
 
 base_url = "https://www.journaldespalaces.com/carriere/offres-hotels-restaurants-spa-par-date-"
-max_pages = 1
+max_pages = 10
 job_urls = []
 
 wait_time = random.uniform(5, 10)
@@ -79,7 +79,6 @@ driver.quit()  # Close the browser when done
 
 print(f"Collected {len(job_urls)} job URLs")
 
-job_urls = job_urls[:20]
 
 #------------------------CHECK DUPLICATES URL DANS BIGQUERY--------------------------------------------------
 
@@ -219,6 +218,12 @@ for i, job_url in enumerate(job_urls):
     except NoSuchElementException:
         description_1 = ""
 
+    if not description_1:
+        try : 
+            description_1 = driver.find_element(By.CSS_SELECTOR, ".blockquote_first .Carriere_texte").text
+        except NoSuchElementException:
+            description_1 = ""
+            
     # Second block
     try:
         description_2 = driver.find_element(By.CSS_SELECTOR, ".blockquote_second .Carriere_texte").text
